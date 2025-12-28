@@ -54,7 +54,7 @@ Both emoji and text-based formats are equally valid. A compliant parser must be 
 | **Due Date** | 📅 | `due:` | `📅 2026-02-15` | The date the task is expected to be completed. |
 | **Scheduled Date** | ⏳ | `scheduled:` | `⏳ 2026-02-01` | The date the task is scheduled to be worked on. |
 | **Start Date** | 🛫 | `start:` | `🛫 2026-01-15` | The date work on the task is planned to begin. |
-| **Priority** | ⏫🔼🔽 | `priority:` or `p:` | `⏫` or `p:high` | The urgency or importance of the task. |
+| **Priority** | 🔺⏫🔼🔽⏬ | `priority:` or `p:` | `🔺` or `p:highest` | The urgency or importance of the task. |
 | **Recurrence** | 🔁 | `repeat:` or `rec:` | `🔁 every week` | A rule for repeating the task. |
 | **Identifier** | 🆔 | `id:` | `🆔 TODO-1234` | A unique identifier for linking to external systems. |
 | **Assignee** | 👤 | `@` | `👤martin` or `@martin` | The person or team responsible for the task. |
@@ -73,9 +73,9 @@ Dates MUST be in `YYYY-MM-DD` format (ISO 8601). Optional time and timezone info
 
 | Level | Emoji | Text Values | Numeric |
 |---|---|---|---|
-| Highest | ⏫ | `highest`, `critical` | `1` |
-| High | 🔼 | `high` | `2` |
-| Medium |  | `medium`, `normal` | `3` |
+| Highest | 🔺 | `highest`, `critical` | `1` |
+| High | ⏫ | `high` | `2` |
+| Medium | 🔼 | `medium`, `normal` | `3` |
 | Low | 🔽 | `low` | `4` |
 | Lowest | ⏬ | `lowest` | `5` |
 
@@ -127,5 +127,5 @@ A conforming parser MUST:
 4.  Correctly handle backslash-escaped characters in descriptions.
 
 ---
-*Document Version: 1.1.0*
+*Document Version: 0.1.0-draft*
 *Last Updated: 2025-12-28*

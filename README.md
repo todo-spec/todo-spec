@@ -87,7 +87,7 @@ Metadata fields can appear in any order after the description.
 | **Due Date** | 📅 | `due:` | `📅 2026-02-15` or `due:2026-02-15` |
 | **Scheduled Date** | ⏳ | `scheduled:` | `⏳ 2026-02-01` |
 | **Start Date** | 🛫 | `start:` | `🛫 2026-01-15` |
-| **Priority** | ⏫🔼🔽 | `priority:` or `p:` | `⏫` (high) or `p:high` |
+| **Priority** | 🔺⏫🔼🔽⏬ | `priority:` or `p:` | `🔺` (highest) or `p:highest` |
 | **Recurrence** | 🔁 | `repeat:` or `rec:` | `🔁 every week` or `rec:weekly` |
 | **Identifier** | 🆔 | `id:` | `🆔 TODO-1234` or `id:TODO-1234` |
 | **Assignee** | 👤 | `@` | `@martin` or `@team-backend` |
@@ -101,9 +101,9 @@ Metadata fields can appear in any order after the description.
 
 | Level | Emoji | Text Values |
 |-------|-------|-------------|
-| Highest | ⏫ | `highest`, `critical`, `1` |
-| High | 🔼 | `high`, `2` |
-| Medium | 🔸 | `medium`, `normal`, `3` |
+| Highest | 🔺 | `highest`, `critical`, `1` |
+| High | ⏫ | `high`, `2` |
+| Medium | 🔼 | `medium`, `normal`, `3` |
 | Low | 🔽 | `low`, `4` |
 | Lowest | ⏬ | `lowest`, `5` |
 
@@ -341,5 +341,5 @@ Popular Markdown task format using emojis. todo.spec:
 ---
 
 *Document Version: 0.1.0-draft*
-*Last Updated: 2025-01-XX*
+*Last Updated: 2025-12-28*
 *Authors: Simen A. W. Olsen, [Colleague Name]*

@@ -1,5 +1,5 @@
 ; todo-spec ABNF Grammar
-; Version 1.1.0
+; Version 0.1.0-draft
 
 ; This grammar defines the formal syntax for the todo-spec format.
 ; It is intended for authors of parsers and other tooling.
@@ -98,9 +98,9 @@ id-emoji        = %x1F194
 assignee-emoji  = %x1F464
 estimate-emoji  = %x23F1
 
-priority-emoji  = %x23EB ; Highest
-                / %x23EA ; High
-                / %x1F538 ; Medium
+priority-emoji  = %x1F53A ; Highest
+                / %x23EB ; High
+                / %x23EA ; Medium
                 / %x1F53D ; Low
                 / %x1F53C ; Lowest
 
