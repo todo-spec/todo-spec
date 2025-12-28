@@ -1,14 +1,32 @@
 ; todo-spec ABNF Grammar
-; Version 1.0.0
+; Version 1.1.0
 
 ; This grammar defines the formal syntax for the todo-spec format.
 ; It is intended for authors of parsers and other tooling.
 
 ; ------------------------------------------------------------------------------
-; Core Structure
+; Top-Level Structure
 ; ------------------------------------------------------------------------------
 
-todo-line      = keyword ":" 1*WSP description (1*WSP metadata-item) *(*WSP metadata-item)
+; A todo-spec entry is either a Markdown-style task or a generic keyword-led task.
+todo-entry     = markdown-todo / generic-todo
+
+; --- RULE 1: MARKDOWN TASK ---
+; Parses lines starting with "- [ ]" or "- [x]".
+; In this context, no keyword is recognized; all text after the prefix
+; is considered the description.
+markdown-todo  = markdown-prefix 1*WSP description *metadata-chunk
+markdown-prefix = "- " "[" (WSP / "x") "]"
+
+; --- RULE 2: GENERIC TASK ---
+; Parses the standard "KEYWORD: description" format.
+; This is intended for the content of comments after being extracted by a tool.
+; The keyword is REQUIRED in this context.
+generic-todo   = keyword ":" 1*WSP description *metadata-chunk
+
+; ------------------------------------------------------------------------------
+; Core Components
+; ------------------------------------------------------------------------------
 
 keyword        = "TODO" / "FIXME" / "BUG" / "HACK" / "NOTE" / "INFO" / "IDEA" / "REFACTOR" / "REMINDER"
                  ; Case-insensitive
@@ -16,6 +34,10 @@ keyword        = "TODO" / "FIXME" / "BUG" / "HACK" / "NOTE" / "INFO" / "IDEA" / 
 ; The description is any text until the first valid metadata item.
 ; It can contain escaped characters.
 description    = *(unescaped-char / escaped-char)
+
+; A metadata-chunk is a space followed by a single metadata item.
+; The "*" quantifier makes all metadata optional.
+metadata-chunk = 1*WSP metadata-item
 
 ; ------------------------------------------------------------------------------
 ; Metadata
@@ -32,7 +54,7 @@ completed-date = (completed-emoji / "done:") date-time
 priority       = priority-emoji / ("p:" / "priority:") priority-value
 recurrence     = (recurrence-emoji / "rec:" / "repeat:") recurrence-value
 identifier     = (id-emoji / "id:") 1*SAFE-CHAR
-assignee       = "@" 1*SAFE-CHAR
+assignee       = (assignee-emoji / "@") 1*SAFE-CHAR
 tag            = ("#" / "+") 1*SAFE-CHAR
 status         = (status-emoji / "status:") status-value
 estimate       = (estimate-emoji / "estimate:") 1*SAFE-CHAR
@@ -73,6 +95,7 @@ created-emoji   = %x2795
 completed-emoji = %x2705
 recurrence-emoji= %x1F501
 id-emoji        = %x1F194
+assignee-emoji  = %x1F464
 estimate-emoji  = %x23F1
 
 priority-emoji  = %x23EB ; Highest
@@ -91,7 +114,7 @@ status-emoji    = %x2B1C ; todo
 ; Base Characters
 ; ------------------------------------------------------------------------------
 
-escaped-char   = "\\" (date-emoji / scheduled-emoji / start-emoji / recurrence-emoji / id-emoji / estimate-emoji / priority-emoji / status-emoji / "@" / "#" / "+" / ":")
+escaped-char   = "\" (date-emoji / scheduled-emoji / start-emoji / recurrence-emoji / id-emoji / estimate-emoji / priority-emoji / status-emoji / "@" / "#" / "+" / ":")
 unescaped-char = VCHAR / WSP ; Any visible character or whitespace, excluding start of a metadata sequence
 
 SAFE-CHAR      = ALPHA / DIGIT / "-" / "_" / "."

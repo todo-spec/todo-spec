@@ -1,5 +1,5 @@
 # todo-spec Test Suite
-# Version 1.0.0
+# Version 1.1.0
 
 # This file contains a set of test cases to verify the correctness of a todo-spec parser
 # based on the ABNF grammar.
@@ -56,6 +56,10 @@
   input: "TODO: Review the PR @alice"
   should_pass: true
 
+- description: "A valid TODO with an assignee in emoji format."
+  input: "TODO: Review the PR 👤alice"
+  should_pass: true
+
 - description: "A valid TODO with a tag."
   input: "TODO: Update the docs #documentation"
   should_pass: true
@@ -91,6 +95,22 @@
 - description: "A tag with a space should be invalid (parses as two tags)."
   input: "TODO: This is tricky #backend #api"
   should_pass: true # This is valid, but a linter might warn.
+
+# ------------------------------------------------------------------------------
+# Category: Markdown-Specific
+# ------------------------------------------------------------------------------
+
+- description: "A valid Markdown task without a keyword."
+  input: "- [ ] A task without a keyword 📅 2026-03-01"
+  should_pass: true
+
+- description: "A valid Markdown task with a 'TODO:' in the description."
+  input: "- [ ] TODO: This is part of the description"
+  should_pass: true
+
+- description: "A valid completed Markdown task."
+  input: "- [x] This task is complete ✅ 2026-01-01"
+  should_pass: true
 
 # ------------------------------------------------------------------------------
 # Category: Escaping

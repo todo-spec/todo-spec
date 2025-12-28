@@ -26,6 +26,16 @@ A `todo-spec` annotation consists of a keyword, a description, and optional meta
 - **KEYWORD**: A case-insensitive term indicating the nature of the annotation. The recommended keywords are `TODO`, `FIXME`, `BUG`, `HACK`, `NOTE`, `INFO`, `IDEA`, `REFACTOR`, `REMINDER`. Parsers MUST recognize `TODO` and `FIXME`.
 - **description**: A free-form text string describing the task. It begins after the keyword and a space, and ends at the start of the first valid metadata tag or the end of the line/comment block.
 
+### 2.1.1. Markdown Task Lists
+
+When a `todo-spec` annotation appears in a Markdown task list (`- [ ]` or `- [x]`), the format is modified.
+
+```markdown
+- [ ] <description> [metadata...]
+```
+
+In this context, a `KEYWORD` is not parsed as a special token. Any text that appears in the position of a keyword (e.g., `TODO:`) is considered part of the `description`. The `- [ ]` or `- [x]` prefix is sufficient to identify the line as a task.
+
 ### 2.2. Metadata
 
 Metadata fields provide structured information about the TODO. They can appear in any order after the description.
@@ -47,7 +57,7 @@ Both emoji and text-based formats are equally valid. A compliant parser must be 
 | **Priority** | ⏫🔼🔽 | `priority:` or `p:` | `⏫` or `p:high` | The urgency or importance of the task. |
 | **Recurrence** | 🔁 | `repeat:` or `rec:` | `🔁 every week` | A rule for repeating the task. |
 | **Identifier** | 🆔 | `id:` | `🆔 TODO-1234` | A unique identifier for linking to external systems. |
-| **Assignee** | 👤 | `@` | `@martin` | The person or team responsible for the task. |
+| **Assignee** | 👤 | `@` | `👤martin` or `@martin` | The person or team responsible for the task. |
 | **Tags/Projects** | — | `#` or `+` | `#backend` `+ProjectX` | Keywords or project names for categorization. |
 | **Status** | ✅🚧❌ | `status:` | `status:in-progress` | The current state of the task. |
 | **Created Date** | ➕ | `created:` | `➕ 2026-01-01` | The date the task was created. |
@@ -111,11 +121,11 @@ To include a character in the description that might otherwise be interpreted as
 ## 3. Conformance
 
 A conforming parser MUST:
-1.  Correctly parse the basic structure of keyword, description, and metadata.
+1.  Correctly parse the two primary structures: the generic `keyword: description` format and the keyword-less Markdown task list format.
 2.  Recognize both emoji and text formats for all standard metadata fields.
 3.  Strictly interpret date formats as per ISO 8601.
 4.  Correctly handle backslash-escaped characters in descriptions.
 
 ---
-*Document Version: 1.0.0*
+*Document Version: 1.1.0*
 *Last Updated: 2025-12-28*

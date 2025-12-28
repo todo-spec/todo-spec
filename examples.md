@@ -59,11 +59,11 @@ This document provides a comprehensive set of examples for the `todo-spec` forma
 ## Project Phoenix Sprint Plan
 
 - [ ] TODO: Design the new user dashboard 📅 2026-02-01 ⏫ @design-team #ux
-- [ ] TODO: Set up the CI/CD pipeline 📅 2026-02-05 🔼 @devops-team
-- [ ] TODO: Implement the OAuth2 integration 📅 2026-02-15 🔼 @alice #auth
+- [ ] Set up the CI/CD pipeline 📅 2026-02-05 🔼 @devops-team
+- [ ] Implement the OAuth2 integration 📅 2026-02-15 🔼 @alice #auth
 - [x] BUG: Fix the login redirect loop ✅ 2026-01-18 🆔 BUG-123
-- [ ] TODO: Write API documentation 📅 2026-02-20 🔽 #docs
-- [ ] TODO: Schedule a recurring weekly sync meeting 🔁 every week @team
+- [ ] Write API documentation 📅 2026-02-20 🔽 #docs
+- [ ] Schedule a recurring weekly sync meeting 🔁 every week @team
 ```
 
 ## 3. Git Commit Messages
@@ -116,4 +116,9 @@ Meeting Notes - 2026-01-20
 ### Custom Fields
 ```python
 # TODO: Sync user data with Salesforce sfdc-id:12345 📅 2026-05-01
+```
+
+### Assignee Emoji
+```javascript
+// TODO: Onboard the new developer 👤dane
 ```
