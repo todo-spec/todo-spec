@@ -82,20 +82,20 @@ Metadata fields can appear in any order after the description.
 
 ### Metadata Fields
 
-| Field | Emoji | Text Alternative | Example |
-|-------|-------|------------------|---------|
-| **Due Date** | 📅 | `due:` | `📅 2026-02-15` or `due:2026-02-15` |
-| **Scheduled Date** | ⏳ | `scheduled:` | `⏳ 2026-02-01` |
-| **Start Date** | 🛫 | `start:` | `🛫 2026-01-15` |
-| **Priority** | 🔺⏫🔼🔽⏬ | `priority:` or `p:` | `🔺` (highest) or `p:highest` |
-| **Recurrence** | 🔁 | `repeat:` or `rec:` | `🔁 every week` or `rec:weekly` |
-| **Identifier** | 🆔 | `id:` | `🆔 TODO-1234` or `id:TODO-1234` |
-| **Assignee** | 👤 | `@` | `@martin` or `@team-backend` |
-| **Tags/Projects** | — | `#` or `+` | `#backend` `+ProjectX` |
-| **Status** | ✅🚧❌ | `status:` | `status:in-progress` |
-| **Created Date** | ➕ | `created:` | `➕ 2026-01-01` |
-| **Completed Date** | ✅ | `done:` | `✅ 2026-01-20` |
-| **Estimate** | ⏱️ | `estimate:` | `⏱️ 2h` or `estimate:2h` |
+| Field | Text Alternative | Emoji | Example |
+|-------|------------------|-------|---------|
+| **Due Date** | `due:` | 📅 | `due:2026-02-15` or `📅 2026-02-15` |
+| **Scheduled Date** | `scheduled:` | ⏳ | `scheduled:2026-02-01` |
+| **Start Date** | `start:` | 🛫 | `start:2026-01-15` |
+| **Priority** | `priority:` or `p:` | 🔺⏫🔼🔽⏬ | `p:highest` or `🔺` |
+| **Recurrence** | `repeat:` or `rec:` | 🔁 | `rec:weekly` or `🔁 every week` |
+| **Identifier** | `id:` | 🆔 | `id:TODO-1234` or `🆔 TODO-1234` |
+| **Assignee** | `@` | 👤 | `@martin` or `@team-backend` |
+| **Tags/Projects** | `#` or `+` | — | `#backend` or `+ProjectX` |
+| **Status** | `status:` | ✅🚧❌ | `status:in-progress` |
+| **Created Date** | `created:` | ➕ | `created:2026-01-01` |
+| **Completed Date** | `done:` | ✅ | `done:2026-01-20` |
+| **Estimate** | `estimate:` | ⏱️ | `estimate:2h` or `⏱️ 2h` |
 
 ### Priority Levels
 
@@ -139,16 +139,16 @@ rec:FREQ=MONTHLY;BYMONTHDAY=15
 
 ## Format Variants
 
-### Emoji Format (Default)
-Optimized for readability and modern editor support:
-```javascript
-// TODO: Implement user authentication 📅 2026-02-15 ⏫ @sarah #security
-```
-
-### Text Format
-For environments where emojis are problematic:
+### Text Format (Default)
+The default, most compatible format:
 ```javascript
 // TODO: Implement user authentication due:2026-02-15 p:high @sarah #security
+```
+
+### Emoji Format
+An alternative format, optimized for readability and modern editor support:
+```javascript
+// TODO: Implement user authentication 📅 2026-02-15 ⏫ @sarah #security
 ```
 
 ### Mixed Format
@@ -286,20 +286,7 @@ Popular Markdown task format using emojis. todo.spec:
 - Extends to work in source code comments
 - Provides text-only alternative syntax
 
----
 
-## Open Questions for Discussion
-
-1. **Emoji vs Text**: Should emoji be the primary format, or should we default to text with emoji as optional?
-2. **Strict vs Loose Parsing**: How strictly should parsers validate? Should `📅 tomorrow` be valid?
-3. **Natural Language Dates**: Support `📅 next friday` or require ISO dates?
-4. **Custom Fields**: Allow arbitrary `key:value` pairs for extensibility?
-5. **Multiline TODOs**: How to handle descriptions that span multiple lines?
-6. **Nested/Subtasks**: Define syntax for task hierarchies?
-7. **Time Zones**: Include timezone in datetime fields?
-8. **Localization**: Support non-English keywords (`FAZER:` in Portuguese)?
-9. **Comment Prefix Normalization**: Define how to extract TODO from various comment styles (`//`, `#`, `/* */`, `<!-- -->`, etc.)?
-10. **Escaping**: How to include literal `📅` or `#` in descriptions?
 
 ---
 

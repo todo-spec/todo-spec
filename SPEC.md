@@ -40,29 +40,29 @@ In this context, a `KEYWORD` is not parsed as a special token. Any text that app
 
 Metadata fields provide structured information about the TODO. They can appear in any order after the description.
 
-#### 2.2.1. Formats: Emoji and Text
+#### 2.2.1. Formats: Text and Emoji
 
-Both emoji and text-based formats are equally valid. A compliant parser must be able to interpret both.
+Both text and emoji-based formats are equally valid. A compliant parser must be able to interpret both. The text-based format is the default for maximum compatibility.
 
-- **Emoji Format**: `📅 2026-02-15`
 - **Text Format**: `due:2026-02-15`
+- **Emoji Format**: `📅 2026-02-15`
 
 #### 2.2.2. Standard Fields
 
-| Field | Emoji | Text Alternative | Example | Description |
+| Field | Text Alternative | Emoji | Example | Description |
 |---|---|---|---|---|
-| **Due Date** | 📅 | `due:` | `📅 2026-02-15` | The date the task is expected to be completed. |
-| **Scheduled Date** | ⏳ | `scheduled:` | `⏳ 2026-02-01` | The date the task is scheduled to be worked on. |
-| **Start Date** | 🛫 | `start:` | `🛫 2026-01-15` | The date work on the task is planned to begin. |
-| **Priority** | 🔺⏫🔼🔽⏬ | `priority:` or `p:` | `🔺` or `p:highest` | The urgency or importance of the task. |
-| **Recurrence** | 🔁 | `repeat:` or `rec:` | `🔁 every week` | A rule for repeating the task. |
-| **Identifier** | 🆔 | `id:` | `🆔 TODO-1234` | A unique identifier for linking to external systems. |
-| **Assignee** | 👤 | `@` | `👤martin` or `@martin` | The person or team responsible for the task. |
-| **Tags/Projects** | — | `#` or `+` | `#backend` `+ProjectX` | Keywords or project names for categorization. |
-| **Status** | ✅🚧❌ | `status:` | `status:in-progress` | The current state of the task. |
-| **Created Date** | ➕ | `created:` | `➕ 2026-01-01` | The date the task was created. |
-| **Completed Date** | ✅ | `done:` | `✅ 2026-01-20` | The date the task was completed. |
-| **Estimate** | ⏱️ | `estimate:` | `⏱️ 2h` | The estimated time or effort required. |
+| **Due Date** | `due:` | 📅 | `due:2026-02-15` | The date the task is expected to be completed. |
+| **Scheduled Date** | `scheduled:` | ⏳ | `scheduled:2026-02-01` | The date the task is scheduled to be worked on. |
+| **Start Date** | `start:` | 🛫 | `start:2026-01-15` | The date work on the task is planned to begin. |
+| **Priority** | `priority:` or `p:` | 🔺⏫🔼🔽⏬ | `p:highest` or `🔺` | The urgency or importance of the task. |
+| **Recurrence** | `repeat:` or `rec:` | 🔁 | `repeat:every week` | A rule for repeating the task. |
+| **Identifier** | `id:` | 🆔 | `id:TODO-1234` | A unique identifier for linking to external systems. |
+| **Assignee** | `@` | 👤 | `@martin` or `👤martin` | The person or team responsible for the task. |
+| **Tags/Projects** | `#` or `+` | — | `#backend` or `+ProjectX` | Keywords or project names for categorization. |
+| **Status** | `status:` | ✅🚧❌ | `status:in-progress` | The current state of the task. |
+| **Created Date** | `created:` | ➕ | `created:2026-01-01` | The date the task was created. |
+| **Completed Date** | `done:` | ✅ | `done:2026-01-20` | The date the task was completed. |
+| **Estimate** | `estimate:` | ⏱️ | `estimate:2h` | The estimated time or effort required. |
 
 ### 2.3. Field-Specific Details
 
